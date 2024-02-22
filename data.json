@@ -1,6 +1,6 @@
 {
   "users": {
-    "alice": {
+    "sankar": {
       "roles": ["admin"],
       "location": {
         "country": "US",
