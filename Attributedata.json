@@ -1,0 +1,12 @@
+{
+  "role_permission": {
+    "attributes": {
+      "Replenishment": ["headerCreated","headerEntryMethod","supplierName"],
+      "access_admin": ["poNumber","status","parentCompanyLogo","destinationCountry","poCreator","headerCreated","headerEntryMethod","supplierName"]
+    },
+    "activities": {
+      "Replenishment": ["admin"],
+      "access_admin": ["admin"]
+    }
+  }
+}
