@@ -21,7 +21,7 @@
         "ip": "8.8.8.8"
       }
     },
-    "eve": {
+    "agradip": {
       "roles": ["customer"],
       "location": {
         "country": "US",
