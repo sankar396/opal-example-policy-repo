@@ -28,6 +28,6 @@ allow {
 
     some j
     input.attribute[j].name == "age"
-    input.attribute[j].value == "27"
+    input.attribute[j].value < "27"
 }
 
