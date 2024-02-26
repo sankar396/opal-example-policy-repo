@@ -10,8 +10,24 @@ allow {
     input.attribute[i].name == "dept"
     input.attribute[i].value == "25"
 
-     some j
-        input.attribute[j].name == "age"
-        input.attribute[j].value == "27"
+    some j
+    input.attribute[j].name == "age"
+    input.attribute[j].value == "27"
+}
+
+# creating policy fully into rego files as below
+allow {
+
+    actions := {"read","update"}
+	input.resource == "STO"
+	uuid = "abcd"
+    input.action = actions[_]
+    some i
+    input.attribute[i].name == "dept"
+    input.attribute[i].value == "25"
+
+    some j
+    input.attribute[j].name == "age"
+    input.attribute[j].value == "27"
 }
 
