@@ -3,6 +3,7 @@ package app.rbs
 default allow = false
 
 allow {
-	roleAttr = data.role_permission.attributes[input.role]
-	input.attribute = roleAttr[_]
+	resourceActions = data.resource_actions[input.resource].actions
+	input.action = resourceActions[_]
+
 }

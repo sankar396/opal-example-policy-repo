@@ -96,5 +96,16 @@
       "Replenishment": ["admin"],
       "access_admin": ["admin"]
     }
+  },
+  "resource_actions": {
+    "PO": {
+      "actions": ["read","update"],
+      "attributes": [
+        {"name": "dept",
+          "value":"25"}
+      ]
+
+    },
+    "STO": ["read"]
   }
 }
