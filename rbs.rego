@@ -1,33 +1,33 @@
-package app.rbs
+package app.abac
 
-default allow = false
+import future.keywords.every
 
 allow {
-	resourceActions = data.resource_actions[input.resource].actions
-	input.action = resourceActions[_]
+	roles = input.roles # Replenishment, access_admin
+	print("Found role", roles)
+	policies = data.resource_actions[input.resource] #from data
 
-    some i
-    input.attribute[i].name == "dept"
-    input.attribute[i].value == "25"
+	#print("Found policy=ies", policies)
+	inputAttributeMap := input.attribute
+	print("inputAttributeMap: ", inputAttributeMap)
 
-    some j
-    input.attribute[j].name == "age"
-    input.attribute[j].value == "27"
+	some i, j
+	role_policies = data.role_policies[roles[i]]
+	print("Found role_policies", role_policies)
+	policyName := role_policies[j]
+	print("Found policyName", policyName)
+	policy := policies[policyName]
+	print("Found policy", policy.actions)
+	input.action = policy.actions[_]
+    every attribute in policy.attributes {
+     #print("Found attribute", attribute)
+     inputAttr := inputAttributeMap[attribute.name]
+     #print("Found input attribute", inputAttr)
+     eval(attribute.value,attribute.operation,inputAttr.value)
+     #attribute.value == inputAttr.value
+    }
 }
 
-# creating policy fully into rego files as below
-allow {
-
-    actions := {"read","update"}
-	input.resource == "STO"
-	uuid = "abcd"
-    input.action = actions[_]
-    some i
-    input.attribute[i].name == "dept"
-    input.attribute[i].value == "25"
-
-    some j
-    input.attribute[j].name == "age"
-    input.attribute[j].value < "27"
+eval(r, "equals", c) {
+    r == c
 }
-
