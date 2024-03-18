@@ -5,14 +5,14 @@ import future.keywords.every
 allow {
 	roles = input.roles # Replenishment, access_admin
 	print("Found role", roles)
-	policies = data.ds.resource_policies[input.resource] #from data
+	policies = data.result.dss.resource_policies[input.resource] #from data
 
 	#print("Found policy=ies", policies)
 	inputAttributeMap := input.attribute
 	print("inputAttributeMap: ", inputAttributeMap)
 
 	some i, j
-	role_policies = data.ds.role_policies[roles[i]]
+	role_policies = data.result.dss.role_policies[roles[i]]
 	print("Found role_policies", role_policies)
 	policyName := role_policies[j]
 	print("Found policyName", policyName)
