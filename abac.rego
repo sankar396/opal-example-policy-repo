@@ -21,13 +21,13 @@ allow {
 	policy := policies[policyName]
 	print("Found policy", policy.actions)
 	input.action = policy.actions[_]
-    every attribute in policy.attributes {
-     #print("Found attribute", attribute)
-     inputAttr := inputAttributeMap[attribute.name]
-     #print("Found input attribute", inputAttr)
-     eval(attribute.value,attribute.operation,inputAttr.value)
-     #attribute.value == inputAttr.value
-    }
+    	every attribute in policy.attributes {
+     	 #print("Found attribute", attribute)
+     	 inputAttr := inputAttributeMap[attribute.name]
+     	 #print("Found input attribute", inputAttr)
+     	 eval(attribute.value,attribute.operation,inputAttr.value)
+     	 #attribute.value == inputAttr.value
+    	}
 }
 
 eval(r, "equals", c) {
