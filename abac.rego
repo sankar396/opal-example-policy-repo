@@ -6,7 +6,7 @@ default allow = false
 
 allow {
 	roles = input.roles # Replenishment, access_admin
-	print.info("Testing @@@ print")
+	print("Testing @@@ print")
 }
 
 eval(r, "equals", c) {
