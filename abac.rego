@@ -6,7 +6,7 @@ default allow = false
 
 allow {
 	print("Testing @@@1 print")
-	print("DATA ",data.app.rbac)
+	print("@@ DATA ",data.dss)
 	
 }
 
