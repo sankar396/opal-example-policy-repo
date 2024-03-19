@@ -3,6 +3,8 @@ package app.abac
 import future.keywords.every
 
 default allow = false
+default data_is_available = false
+default data2_is_available = false
 
 allow {
 	roles = input.roles # Replenishment, access_admin
@@ -29,6 +31,14 @@ allow {
      	 #attribute.value == inputAttr.value
     	}
 	
+}
+
+data_is_available {
+	test = data.dss
+}
+
+data2_is_available {
+	test = data.dst
 }
 
 eval(r, "equals", c) {
