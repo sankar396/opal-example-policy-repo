@@ -22,9 +22,9 @@ allow {
 	print("Found policy", policy)
 	input.action = policy.actions[_]
     	every attribute in policy.attributes {
-     	 #print("Found attribute", attribute)
+     	 print("Found attribute", attribute)
      	 inputAttr := inputAttributeMap[attribute.name]
-     	 #print("Found input attribute", inputAttr)
+     	 print("Found input attribute", inputAttr)
      	 eval(attribute.value,attribute.operation,inputAttr.value)
      	 #attribute.value == inputAttr.value
     	}
@@ -32,5 +32,6 @@ allow {
 }
 
 eval(r, "equals", c) {
+    print("@@ Evaluating attribute",r) 
     r == c
 }
