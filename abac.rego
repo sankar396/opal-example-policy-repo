@@ -11,7 +11,7 @@ allow {
 
 	#print("Found policy=ies", policies)
 	inputAttributeMap := input.attribute
-	print("inputAttributeMap: ", inputAttributeMap)
+	#print("inputAttributeMap: ", inputAttributeMap)
 
 	some i, j
 	role_policies = data.dss.role_policies[roles[i]]
@@ -19,7 +19,7 @@ allow {
 	policyName := role_policies[j]
 	print("Found policyName", policyName)
 	policy := policies[policyName]
-	print("Found policy", policy.actions)
+	print("Found policy", policy)
 	input.action = policy.actions[_]
     	every attribute in policy.attributes {
      	 #print("Found attribute", attribute)
