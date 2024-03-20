@@ -50,8 +50,6 @@ allow {
 	inputAttributeMap := input.attribute
 	print("inputAttributeMap: ", inputAttributeMap)
 	userEval(input.evalType,data,userId,policies,inputAttributeMap)
-    	}
-	
 }
 
 userEval("OR",data,userId,policies,inputAttributeMap) {
