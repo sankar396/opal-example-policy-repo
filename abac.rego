@@ -54,9 +54,9 @@ userEval("OR",data,userId,policies,input) {
     print("Eval type OR")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
-    some j
     user_policies = data.dss.user_policies[userId]
     print("Found user_policies ", user_policies)
+    some j
     policyName := user_policies[j]
     print("Found policyName", policyName)
     policy := policies[policyName]
@@ -75,9 +75,9 @@ userEval("AND",data,userId,policies,input) {
     print("Eval type AND")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
-    every j
     user_policies = data.dss.user_policies[userId]
     print("Found user_policies ", user_policies)
+    every j
     policyName := user_policies[j]
     print("Found policyName", policyName)
     policy := policies[policyName]
