@@ -77,8 +77,7 @@ userEval("AND",data,userId,policies,input) {
     print("inputAttributeMap: ", inputAttributeMap)
     user_policies = data.dss.user_policies[userId]
     print("Found user_policies ", user_policies)
-    every j
-    policyName := user_policies[j]
+    every policyName in user_policies
     print("Found policyName", policyName)
     policy := policies[policyName]
     print("Found policy", policy)
