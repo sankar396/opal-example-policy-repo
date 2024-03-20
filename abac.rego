@@ -68,6 +68,7 @@ userEval("OR",data,userId,policies,inputAttributeMap) {
      print("Found input attribute", inputAttr)
      eval(attribute.value,attribute.operation,inputAttr.value)
      #attribute.value == inputAttr.value
+    }
 }
 
 userEval("AND",data,userId,policies,inputAttributeMap) {
@@ -86,6 +87,7 @@ userEval("AND",data,userId,policies,inputAttributeMap) {
      print("Found input attribute", inputAttr)
      eval(attribute.value,attribute.operation,inputAttr.value)
      #attribute.value == inputAttr.value
+    }
 }
 
 eval(r, "equals", c) {
