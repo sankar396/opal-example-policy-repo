@@ -47,13 +47,13 @@ allow {
 	policies = data.dss.resource_policies[input.resource] #from data
 
 	#print("Found policy=ies", policies)
-	inputAttributeMap := input.attribute
-	print("inputAttributeMap: ", inputAttributeMap)
-	userEval(input.evalType,data,userId,policies,inputAttributeMap)
+	userEval(input.evalType,data,userId,policies,input)
 }
 
-userEval("OR",data,userId,policies,inputAttributeMap) {
+userEval("OR",data,userId,policies,input) {
     print("Eval type OR")
+    inputAttributeMap := input.attribute
+    print("inputAttributeMap: ", inputAttributeMap)
     some j
     user_policies = data.dss.user_policies[userId]
     print("Found user_policies ", user_policies)
@@ -71,8 +71,10 @@ userEval("OR",data,userId,policies,inputAttributeMap) {
     }
 }
 
-userEval("AND",data,userId,policies,inputAttributeMap) {
+userEval("AND",data,userId,policies,input) {
     print("Eval type AND")
+    inputAttributeMap := input.attribute
+    print("inputAttributeMap: ", inputAttributeMap)
     every j
     user_policies = data.dss.user_policies[userId]
     print("Found user_policies ", user_policies)
