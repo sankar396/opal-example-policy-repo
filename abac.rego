@@ -10,6 +10,7 @@ data_is_available {
 }
 
 allow {
+	print("Found evaluation Type Role")
     	input.evaluationType == "ROLE"
 	roles = input.roles # Replenishment, access_admin
 	print("Found role Policy ", roles)
@@ -38,6 +39,7 @@ allow {
 }
 
 allow {
+	print("Found evaluation Type USER")
 	input.evaluationType == "USER"
 	userId = input.user # s0s0hg8
 	print("USER POLICY ", userId)
