@@ -13,7 +13,7 @@ allow {
 	print("Found evaluation Subject Role")
     	input.evalSubject == "ROLE"
 	roles = input.roles # Replenishment, access_admin
-	print("Found role Policy ", roles)
+	print("Found role Policy: ", roles)
 	policies = data.dss.resource_policies[input.resource] #from data
 
 	#print("Found policy=ies", policies)
