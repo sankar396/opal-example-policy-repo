@@ -77,17 +77,18 @@ userEval("AND",data,userId,policies,input) {
     print("inputAttributeMap: ", inputAttributeMap)
     user_policies = data.dss.user_policies[userId]
     print("Found user_policies ", user_policies)
-    every policyName in user_policies
-    print("Found policyName", policyName)
-    policy := policies[policyName]
-    print("Found policy", policy)
-    input.action = policy.actions[_]
-    every attribute in policy.attributes {
-     print("Found attribute", attribute)
-     inputAttr := inputAttributeMap[attribute.name]
-     print("Found input attribute", inputAttr)
-     eval(attribute.value,attribute.operation,inputAttr.value)
-     #attribute.value == inputAttr.value
+    every policyName in user_policies {
+     print("Found policyName", policyName)
+     policy := policies[policyName]
+     print("Found policy", policy)
+     input.action = policy.actions[_]
+     every attribute in policy.attributes {
+      print("Found attribute", attribute)
+      inputAttr := inputAttributeMap[attribute.name]
+      print("Found input attribute", inputAttr)
+      eval(attribute.value,attribute.operation,inputAttr.value)
+      #attribute.value == inputAttr.value
+     }
     }
 }
 
