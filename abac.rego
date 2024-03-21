@@ -39,7 +39,7 @@ allow {
 }
 
 allow {
-	print("Found evaluation Subject USER")
+	print("Found evaluation Subject  USER")
 	input.evalSubject == "USER"
 	userId = input.user # s0s0hg8
 	print("USER POLICY ", userId)
