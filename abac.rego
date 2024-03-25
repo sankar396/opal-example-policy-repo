@@ -11,7 +11,6 @@ data_is_available {
 
 allow {
 	print("Found evaluation Subject Role")
-    	input.evalSubject == "ROLE"
 	roles = input.roles # Replenishment, access_admin
 	print("Found role Policy: ", roles)
 	policies = data.dss.resource_policies[input.resource] #from data
@@ -40,7 +39,6 @@ allow {
 
 allow {
 	print("Found evaluation Subject  USER")
-	input.evalSubject == "USER"
 	userId = input.user # s0s0hg8
 	print("USER POLICY ", userId)
 	print("Found user", userId)
