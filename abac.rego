@@ -12,20 +12,19 @@ data_is_available {
 allow {
 	print("Found  evaluation Subject Role")
     	input.evalSubject == "ROLE"
-	roles = input.roles # Replenishment, access_admin
-	print("Found role Policy: ", roles)
 	policies = data.dss.resource_policies[input.resource] #from data
 
 	#print("Found policies", policies)
-	userEval(input.evalType,policies,roles)
+	userEval(input.evalType,policies)
 	
 }
 
 
-roleEval("OR",policies,roles) {
+roleEval("OR",policies) {
     print("Eval type OR")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
+    roles = input.roles
     some i
     role_policies = data.dss.role_policies[roles[i]]
     print("Found role_policies ", role_policies)
@@ -46,6 +45,7 @@ roleEval("OR",policies,roles) {
 
 roleEval("AND",policies,roles) {
     print("Eval type AND")
+    roles = input.roles
     print("Found roles ", roles)
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
