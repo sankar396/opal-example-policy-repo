@@ -43,7 +43,7 @@ roleEval("OR",policies) {
      }
 }
 
-roleEval("AND",policies,roles) {
+roleEval("AND",policies) {
     print("Eval type AND")
     roles = input.roles
     print("Found roles ", roles)
