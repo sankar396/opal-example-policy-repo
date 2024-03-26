@@ -49,8 +49,9 @@ roleEval("AND",policies,roles) {
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
     some i
-    print("Found i ", roles[i])
-    role_policies = data.dss.role_policies[roles[i]]
+    foundRole := roles[i]
+    print("Found ith role ", foundRole)
+    role_policies = data.dss.role_policies[foundRole]
     print("Found role_policies ", role_policies)
     every policyName in role_policies {
      print("Found policyName", policyName)
