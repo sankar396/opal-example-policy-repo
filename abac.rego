@@ -29,19 +29,19 @@ roleEval("OR",policies,roles) {
     some i
     role_policies = data.dss.role_policies[roles[i]]
     print("Found role_policies ", role_policies)
-    some k
-    policyName := role_policies[k]
-    print("Found policyName", policyName)
-    policy := policies[policyName]
-    print("Found policy", policy)
-    input.action = policy.actions[_]
-    every attribute in policy.attributes {
-     print("Found attribute", attribute)
-     inputAttr := inputAttributeMap[attribute.name]
-     print("Found input attribute", inputAttr)
-     eval(attribute.value,attribute.operation,inputAttr.value)
-     #attribute.value == inputAttr.value
-    }
+     some k
+     policyName := role_policies[k]
+     print("Found policyName", policyName)
+     policy := policies[policyName]
+     print("Found policy", policy)
+     input.action = policy.actions[_]
+     every attribute in policy.attributes {
+      print("Found attribute", attribute)
+      inputAttr := inputAttributeMap[attribute.name]
+      print("Found input attribute", inputAttr)
+      eval(attribute.value,attribute.operation,inputAttr.value)
+      #attribute.value == inputAttr.value
+     }
 }
 
 roleEval("AND",policies,roles) {
