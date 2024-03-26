@@ -10,7 +10,7 @@ data_is_available {
 }
 
 allow {
-	print("Found evaluation Subject Role")
+	print("Found  evaluation Subject Role")
     	input.evalSubject == "ROLE"
 	roles = input.roles # Replenishment, access_admin
 	print("Found role Policy: ", roles)
