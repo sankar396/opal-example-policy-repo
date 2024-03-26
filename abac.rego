@@ -44,7 +44,7 @@ roleEval("OR",policies,roles) {
     }
 }
 
-roleEval("AND",userId,policies,roles) {
+roleEval("AND",policies,roles) {
     print("Eval type AND")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
