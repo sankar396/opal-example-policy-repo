@@ -15,7 +15,7 @@ allow {
 	policies = data.dss.resource_policies[input.resource] #from data
 
 	#print("Found policies", policies)
-	userEval(input.evalType,policies)
+	roleEval(input.evalType,policies)
 	
 }
 
