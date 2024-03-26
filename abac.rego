@@ -48,6 +48,7 @@ roleEval("AND",policies,roles) {
     print("Eval type AND")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
+    print("Found roles ", roles)
     some i
     foundRole := roles[i]
     print("Found ith role ", foundRole)
