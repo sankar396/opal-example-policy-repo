@@ -11,40 +11,70 @@ data_is_available {
 
 allow {
 	print("Found evaluation Subject Role")
+    	input.evalSubject == "ROLE"
 	roles = input.roles # Replenishment, access_admin
 	print("Found role Policy: ", roles)
 	policies = data.dss.resource_policies[input.resource] #from data
 
-	#print("Found policy=ies", policies)
-	inputAttributeMap := input.attribute
-	print("inputAttributeMap: ", inputAttributeMap)
-
-	some i, j
-	role_policies = data.dss.role_policies[roles[i]]
-	print("Found role_policies", role_policies)
-	policyName := role_policies[j]
-	print("Found policyName", policyName)
-	policy := policies[policyName]
-	print("Found policy", policy)
-	input.action = policy.actions[_]
-    	every attribute in policy.attributes {
-     	 print("Found attribute", attribute)
-     	 inputAttr := inputAttributeMap[attribute.name]
-     	 print("Found input attribute", inputAttr)
-     	 eval(attribute.value,attribute.operation,inputAttr.value)
-     	 #attribute.value == inputAttr.value
-    	}
+	#print("Found policies", policies)
+	userEval(input.evalType,policies,roles)
 	
+}
+
+
+roleEval("OR",policies,roles) {
+    print("Eval type OR")
+    inputAttributeMap := input.attribute
+    print("inputAttributeMap: ", inputAttributeMap)
+    some i
+    role_policies = data.dss.role_policies[roles[i]]
+    print("Found role_policies ", role_policies)
+    some k
+    policyName := role_policies[k]
+    print("Found policyName", policyName)
+    policy := policies[policyName]
+    print("Found policy", policy)
+    input.action = policy.actions[_]
+    every attribute in policy.attributes {
+     print("Found attribute", attribute)
+     inputAttr := inputAttributeMap[attribute.name]
+     print("Found input attribute", inputAttr)
+     eval(attribute.value,attribute.operation,inputAttr.value)
+     #attribute.value == inputAttr.value
+    }
+}
+
+roleEval("AND",userId,policies,roles) {
+    print("Eval type AND")
+    inputAttributeMap := input.attribute
+    print("inputAttributeMap: ", inputAttributeMap)
+    some i
+    role_policies = data.dss.role_policies[roles[i]]
+    print("Found role_policies ", role_policies)
+    every policyName in role_policies {
+     print("Found policyName", policyName)
+     policy := policies[policyName]
+     print("Found policy", policy)
+     input.action = policy.actions[_]
+     every attribute in policy.attributes {
+      print("Found attribute", attribute)
+      inputAttr := inputAttributeMap[attribute.name]
+      print("Found input attribute", inputAttr)
+      eval(attribute.value,attribute.operation,inputAttr.value)
+      #attribute.value == inputAttr.value
+     }
+    }
 }
 
 allow {
 	print("Found evaluation Subject  USER")
+	input.evalSubject == "USER"
 	userId = input.user # s0s0hg8
 	print("USER POLICY ", userId)
 	print("Found user", userId)
 	policies = data.dss.resource_policies[input.resource] #from data
 
-	#print("Found policy=ies", policies)
+	#print("Found policies", policies)
 	userEval(input.evalType,userId,policies)
 }
 
