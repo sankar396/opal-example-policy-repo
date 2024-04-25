@@ -25,7 +25,7 @@ roleEval("OR",policies) {
     print("inputAttributeMap: ", inputAttributeMap)
     roles = input.roles
     some i
-    role_policies = data.dss.role_policies[roles[i]]
+    role_policies = data.dss.role_policies[roles[i]].policies
     print("Found role_policies ", role_policies)
      some k
      policyName := role_policies[k]
@@ -52,7 +52,7 @@ roleEval("AND",policies) {
     some i
     foundRole := roles[i]
     print("Found ith role ", foundRole)
-    role_policies = data.dss.role_policies[foundRole]
+    role_policies = data.dss.role_policies[foundRole].policies
     print("Found role_policies ", role_policies)
     every policyName in role_policies {
      print("Found policyName", policyName)
@@ -84,7 +84,7 @@ userEval("OR",userId,policies) {
     print("Eval type OR")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
-    user_policies = data.dss.user_policies[userId]
+    user_policies = data.dss.user_policies[userId].policies
     print("Found user_policies ", user_policies)
     some k
     policyName := user_policies[k]
@@ -105,7 +105,7 @@ userEval("AND",userId,policies) {
     print("Eval type AND")
     inputAttributeMap := input.attribute
     print("inputAttributeMap: ", inputAttributeMap)
-    user_policies = data.dss.user_policies[userId]
+    user_policies = data.dss.user_policies[userId].policies
     print("Found user_policies ", user_policies)
     every policyName in user_policies {
      print("Found policyName", policyName)
